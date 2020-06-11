@@ -1,0 +1,6 @@
+.dropdown , .dropdown-item{
+    cursor: pointer;
+}
+.dropdown-item:hover {
+background-color: lightblue  ;
+}
