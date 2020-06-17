@@ -1,0 +1,54 @@
+<div class="container text-center">
+  <div class="row text-center">
+    <div class="col-md-4">
+      <div class="card" style="width: 18rem;padding-top: 5rem !important;">
+        <img class="card-img-top" src="{{user.photoUrl}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{user.knownAs}}</h5>
+          <p class="card-text text-center">{{user.city}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{user.interests}}</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 px-2" >
+          <a class="btn effect01" ><span style="font-weight: 800;"  >Details </span> <i class="fa fa-user-o"></i></a>
+        </div>
+        <div class="col-md-6 px-2">
+          <a class="btn effect01" ><span style="font-weight: 800;">Message </span> <i class="fa fa-envelope-open-o"></i></a>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 pt-4">
+      <div class="tabbed">
+        <input type="radio" name="tabs" id="tab-nav-1" checked>
+        <label for="tab-nav-1">About</label>
+        <input type="radio" name="tabs" id="tab-nav-2">
+        <label for="tab-nav-2">Interests</label>
+        <input type="radio" name="tabs" id="tab-nav-3">
+        <label for="tab-nav-3">Photos</label>
+        <input type="radio" name="tabs" id="tab-nav-4">
+        <label for="tab-nav-4">Messages</label>
+        <div class="tabs">
+          <div><h2>About</h2><p>{{user.introduction}}</p></div>
+          <div><h2>Interests</h2><p>{{user.interests}}</p></div>
+          <div >
+            <h2>Photos</h2>
+            <div class="photos" *ngFor="let photo of user.photos">
+             <img src="{{photo.url}}" alt="">
+            </div>
+            
+          </div>
+          <div><h2>Messages</h2><p>Fusce vel eros eu lectus ultricies fermentum vestibulum adipiscing odio. Suspendisse ultricies, metus nec dapibus pharetra, quam arcu vulputate nisl, a pretium nisi velit id ante. Nunc auctor augue sit amet orci vestibulum id placerat nulla pellentesque. Duis vel quam velit. Ut auctor ipsum quis lacus semper non pretium mi dignissim. Morbi ultrices augue eget nisi hendrerit placerat. Mauris rhoncus urna quis metus congue quis condimentum risus interdum. Nam lobortis lectus et enim laoreet mattis. Integer faucibus ullamcorper erat, at rhoncus leo bibendum sed. Mauris libero urna, placerat non pretium ac, elementum et arcu. Aliquam non tellus diam, vel scelerisque odio. Etiam a quam et enim vehicula feugiat posuere at dui. Phasellus at nisl quam. Integer nisi mi, varius vitae placerat viverra, dapibus vitae massa. Nullam ut orci vitae nisi ornare aliquam in eget orci.</p></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
