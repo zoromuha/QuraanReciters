@@ -27,6 +27,7 @@ import { MemberDetailsComponent } from './members/member-details/member-details.
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 export function tokenGetter() {
    return localStorage.getItem('token');
  }
@@ -60,6 +61,7 @@ export function tokenGetter() {
    ],
    providers: [
       AuthService,
+      PreventUnsavedChanges,
       ErrorInterceptorProvider,
       AlertifyService,
       { provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } },

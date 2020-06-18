@@ -21,4 +21,7 @@ return this.httpClient.get<User[]>(this.baseUrl, httpOptions);
 getUser(id): Observable<User> {
 return this.httpClient.get<User>(this.baseUrl + id, httpOptions);
 }
+updateUser(id: number , user: User) {
+return this.httpClient.put(this.baseUrl + id, user);
+}
 }

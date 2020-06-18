@@ -1,5 +1,54 @@
 <div style="padding-top: 5rem !important;">
-  <p>
-    {{user.knownAs}}
-  </p>
+  <div class="container text-center">
+    <div class="row text-center">
+      <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="{{user.photoUrl}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{user.knownAs}}</h5>
+            <p class="card-text text-center">{{user.city}}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{user.interests}}</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+          <div class="card-body text-center"  >
+            <button class="btn effect01" form="editForm" *ngIf="editForm.dirty"><span style="font-weight: 800;"  >Save changes </span> <i class="fa fa-check"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 pt-4">
+        <div *ngIf="editForm.dirty" class="alert alert-warning" role="alert">
+         <strong> Information :</strong> You have made some changes. Any unsaved data will be lost.
+        </div>
+        <form #editForm="ngForm" (ngSubmit)="updateUser()" id="editForm">
+          <div class="tabbed">
+            <input type="radio" name="tabs" id="tab-nav-1" checked>
+            <label for="tab-nav-1">About</label>
+            <input type="radio" name="tabs" id="tab-nav-2">
+            <label for="tab-nav-2">Interests</label>
+            <input type="radio" name="tabs" id="tab-nav-3">
+            <label for="tab-nav-3">Photos</label>
+            <input type="radio" name="tabs" id="tab-nav-4">
+            <div class="tabs">
+              <div><h2>About</h2><textarea name="introduction" id="" [(ngModel)]="user.introduction" cols="30" rows="10"></textarea></div>
+              <div><h2>Interests</h2><textarea name="interests" id="" [(ngModel)]="user.interests" cols="30" rows="10"></textarea></div>
+              <div>
+                <h2>Photos</h2>
+                <div class="photos" *ngFor="let photo of user.photos">
+                 <img src="{{photo.url}}" alt="">
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </form>
+   
+      </div>
+  
+    </div>
+  </div>
+  
+  
 </div>
