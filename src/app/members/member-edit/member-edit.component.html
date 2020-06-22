@@ -3,7 +3,8 @@
     <div class="row text-center">
       <div class="col-md-4">
         <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="{{user.photoUrl}}" alt="Card image cap">
+          <img class="card-img-top" src="../../assets/user.png" alt="Card image cap">
+          
           <div class="card-body">
             <h5 class="card-title">{{user.knownAs}}</h5>
             <p class="card-text text-center">{{user.city}}</p>
@@ -34,12 +35,8 @@
             <div class="tabs">
               <div><h2>About</h2><textarea name="introduction" id="" [(ngModel)]="user.introduction" cols="30" rows="10"></textarea></div>
               <div><h2>Interests</h2><textarea name="interests" id="" [(ngModel)]="user.interests" cols="30" rows="10"></textarea></div>
-              <div>
-                <h2>Photos</h2>
-                <div class="photos" *ngFor="let photo of user.photos">
-                 <img src="{{photo.url}}" alt="">
-                </div>
-                
+              <div class=" text-center">
+                <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
               </div>
             </div>
           </div>

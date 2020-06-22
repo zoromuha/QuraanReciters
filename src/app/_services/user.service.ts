@@ -13,7 +13,7 @@ Authorization: 'Bearer ' + localStorage.getItem('token')
   providedIn: 'root'
 })
 export class UserService {
-baseUrl = environment.baseUrl + 'Reciters/';
+baseUrl = environment.baseUrl + 'Users/';
 constructor(private httpClient: HttpClient) { }
 getUsers(): Observable<User[]> {
 return this.httpClient.get<User[]>(this.baseUrl, httpOptions);

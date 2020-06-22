@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -28,6 +28,11 @@ import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
+import { UploadComponent } from './members/member-edit/upload/upload.component';
+import { FileUploadModule } from 'ng2-file-upload';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
+
 export function tokenGetter() {
    return localStorage.getItem('token');
  }
@@ -42,14 +47,17 @@ export function tokenGetter() {
       MessagesComponent,
       MemberCardComponent,
       MemberDetailsComponent,
-      MemberEditComponent
+      MemberEditComponent,
+      UploadComponent
    ],
    imports: [
       BrowserModule,
       AppRoutingModule,
       HttpClientModule,
       FormsModule,
+      ReactiveFormsModule,
       BrowserAnimationsModule,
+      BsDatepickerModule.forRoot(),
       BsDropdownModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       JwtModule.forRoot({
@@ -58,6 +66,7 @@ export function tokenGetter() {
            whitelistedDomains: ['localhost:58883'],
            blacklistedRoutes: ['localhost:58883/api/auth'], },
          }),
+         FileUploadModule
    ],
    providers: [
       AuthService,

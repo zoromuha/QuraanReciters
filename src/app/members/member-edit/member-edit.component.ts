@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/_services/auth.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-member-edit',
@@ -13,9 +14,17 @@ import { NgForm } from '@angular/forms';
 })
 export class MemberEditComponent implements OnInit {
 constructor(private userService: UserService, private authService: AuthService, private alertify: AlertifyService
-   ,        private router: Router) { }
+   ,        private router: Router, private sanitizer: DomSanitizer) { }
 user: User = new User();
+
+public response: {dbPath: ''};
 @ViewChild('editForm') editForm: NgForm;
+getlink(): SafeUrl {
+  return this.sanitizer.bypassSecurityTrustUrl(this.user.photoUrl);
+}
+public uploadFinished = (event) => {
+  this.response = event;
+}
 @HostListener('window:beforeunload', ['$event'])
 unloadNotification($event: any) {
 if (this.editForm.dirty) {
@@ -25,7 +34,7 @@ if (this.editForm.dirty) {
 
 ngOnInit() {
    this.userService.getUser(this.authService.decodeToken.nameid).subscribe((user: User) => {
-    this.user = user;
+     this.user = user;
    }, error => {
     this.alertify.error(error);
   });
